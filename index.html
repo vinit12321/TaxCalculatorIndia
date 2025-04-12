@@ -17,6 +17,24 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/custom.css">
     
+    <!-- Ensure Chart.js is properly loaded -->
+    <script>
+        window.addEventListener('DOMContentLoaded', function() {
+            // Check if Chart.js is loaded
+            if (typeof Chart === 'undefined') {
+                console.error('Chart.js is not loaded properly');
+                // Attempt to reload Chart.js
+                let script = document.createElement('script');
+                script.src = 'https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js';
+                script.integrity = 'sha256-+8RZJua0aEWg+QVVKg4LEzCEm/CmZWx/9Uq2xJs7AQk=';
+                script.crossOrigin = 'anonymous';
+                document.head.appendChild(script);
+            } else {
+                console.log('Chart.js is loaded successfully');
+            }
+        });
+    </script>
+    
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_PUBLISHER_ID"
      crossorigin="anonymous"></script>
