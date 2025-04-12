@@ -17,19 +17,6 @@
                     <i class="fas fa-info-circle me-2"></i>
                     This calculator compares your tax liability under both the old and new tax regimes for FY 2025-26 (AY 2026-27).
                 </div>
-                
-                <!-- In-content AdSense Ad -->
-                <div class="ad-container text-center my-3">
-                    <ins class="adsbygoogle"
-                         style="display:block"
-                         data-ad-client="ca-pub-YOUR_ADSENSE_PUBLISHER_ID"
-                         data-ad-slot="IN_CONTENT_AD_SLOT_ID"
-                         data-ad-format="auto"
-                         data-full-width-responsive="true"></ins>
-                    <script>
-                         (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
-                </div>
 
                 <form id="taxCalculatorForm">
                     <!-- Basic Information Section -->
@@ -508,41 +495,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <!-- Sidebar with ads -->
-    <div class="col-lg-3">
-        <!-- AdSense Sidebar Ad -->
-        <div class="card mb-4">
-            <div class="card-header bg-secondary text-white">
-                <h5 class="card-title mb-0">Sponsored</h5>
-            </div>
-            <div class="card-body">
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-YOUR_ADSENSE_PUBLISHER_ID"
-                     data-ad-slot="SIDEBAR_AD_SLOT_ID"
-                     data-ad-format="auto"
-                     data-full-width-responsive="true"></ins>
-                <script>
-                     (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-            </div>
-        </div>
-        
-        <!-- Information Card -->
-        <div class="card mb-4">
-            <div class="card-header bg-info text-white">
-                <h5 class="card-title mb-0">Tax Tips</h5>
-            </div>
-            <div class="card-body">
-                <ul class="list-unstyled">
-                    <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Invest in tax-saving instruments like PPF, ELSS, or NPS</li>
-                    <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Pay medical insurance premiums for yourself and family</li>
-                    <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Claim HRA benefits if you're living in a rented house</li>
-                    <li><i class="fas fa-check-circle text-success me-2"></i>Make charitable donations to eligible institutions</li>
-                </ul>
             </div>
         </div>
     </div>
