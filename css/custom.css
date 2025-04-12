@@ -1,0 +1,75 @@
+/* Custom CSS for Income Tax Calculator */
+
+/* Ad container styling */
+.ad-container {
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 0.25rem;
+    margin: 15px 0;
+}
+
+/* Additional styling for charts */
+canvas {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 250px;
+}
+
+/* Improve table readability */
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Form styling */
+.form-label {
+    font-weight: 500;
+}
+
+.form-text {
+    font-size: 0.8rem;
+}
+
+/* Sticky footer */
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer {
+    margin-top: auto;
+}
+
+/* Additional spacing and styling */
+.card {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    margin-bottom: 1.5rem;
+}
+
+.card-header {
+    border-bottom: 0;
+}
+
+/* Improve form elements spacing */
+.input-group {
+    margin-bottom: 0.25rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .card-title {
+        font-size: 1.25rem;
+    }
+    
+    h4.card-title {
+        font-size: 1.5rem;
+    }
+    
+    .table th, .table td {
+        padding: 0.5rem;
+    }
+}
