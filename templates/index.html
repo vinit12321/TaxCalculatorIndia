@@ -1,0 +1,508 @@
+{% extends 'base.html' %}
+
+{% block title %}Indian Income Tax Calculator 2025-26{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+                <h4 class="card-title mb-0">
+                    <i class="fas fa-rupee-sign me-2"></i>
+                    Income Tax Calculator (FY 2025-26)
+                </h4>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-info">
+                    <i class="fas fa-info-circle me-2"></i>
+                    This calculator compares your tax liability under both the old and new tax regimes for FY 2025-26 (AY 2026-27).
+                </div>
+
+                <form id="taxCalculatorForm">
+                    <!-- Basic Information Section -->
+                    <div class="row mb-4">
+                        <div class="col-md-12">
+                            <h5 class="border-bottom pb-2 mb-3">
+                                <i class="fas fa-user me-2"></i>
+                                Basic Information
+                            </h5>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="annual_salary" class="form-label">Annual Salary (₹)</label>
+                            <div class="input-group">
+                                <span class="input-group-text">₹</span>
+                                <input type="number" class="form-control" id="annual_salary" name="annual_salary" 
+                                       placeholder="e.g., 10,00,000" required min="0">
+                            </div>
+                            <div class="form-text">Enter your total annual salary before any deductions.</div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="age_category" class="form-label">Age Category</label>
+                            <select class="form-select" id="age_category" name="age_category" required>
+                                <option value="below_60" selected>Below 60 years</option>
+                                <option value="60_to_80">60 to 80 years</option>
+                                <option value="above_80">Above 80 years</option>
+                            </select>
+                            <div class="form-text">Select your age category for correct tax slab application.</div>
+                        </div>
+                    </div>
+
+                    <!-- Deductions Section (for Old Tax Regime) -->
+                    <div class="row mb-4">
+                        <div class="col-md-12">
+                            <h5 class="border-bottom pb-2 mb-3">
+                                <i class="fas fa-hand-holding-usd me-2"></i>
+                                Deductions (for Old Tax Regime)
+                                <button type="button" class="btn btn-sm btn-outline-info float-end" 
+                                        data-bs-toggle="collapse" data-bs-target="#deductionsHelp">
+                                    <i class="fas fa-question-circle"></i> Help
+                                </button>
+                            </h5>
+                            
+                            <div id="deductionsHelp" class="collapse mb-3">
+                                <div class="card card-body bg-info bg-opacity-10">
+                                    <p class="mb-1"><strong>Section 80C:</strong> Investments in PPF, EPF, LIC, ELSS, NSC, Home Loan Principal, Tuition Fees (Max: ₹1,50,000)</p>
+                                    <p class="mb-1"><strong>Section 80D:</strong> Medical Insurance Premium (Max: ₹1,00,000)</p>
+                                    <p class="mb-1"><strong>Section 24b:</strong> Interest Paid on Housing Loan</p>
+                                    <p class="mb-1"><strong>Section 80E:</strong> Interest Paid on Education Loan (No limit)</p>
+                                    <p class="mb-1"><strong>Section 80G:</strong> Donations to specified funds/institutions (Varies)</p>
+                                    <p class="mb-1"><strong>Section 80TTA/80TTB:</strong> Interest from Savings/Fixed Deposits (₹10,000 for non-seniors, ₹50,000 for seniors)</p>
+                                    <p class="mb-1"><strong>Section 80CCD(1B):</strong> Additional Contribution to NPS (Max: ₹50,000)</p>
+                                    <p class="mb-1"><strong>Section 80DDB:</strong> Medical Treatment for Specified Diseases</p>
+                                    <p class="mb-1"><strong>Section 80GG:</strong> Rent Paid when HRA is not received</p>
+                                    <p class="mb-0"><strong>Section 80U:</strong> Deduction for Persons with Disabilities (₹75,000 to ₹1,25,000)</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="section_80c" class="form-label">Section 80C - Investments</label>
+                            <div class="input-group">
+                                <span class="input-group-text">₹</span>
+                                <input type="number" class="form-control" id="section_80c" name="section_80c" 
+                                       placeholder="e.g., 1,50,000" min="0" value="0">
+                            </div>
+                            <div class="form-text">PPF, EPF, LIC, ELSS, etc. (Max: ₹1,50,000)</div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="section_80d" class="form-label">Section 80D - Medical Insurance</label>
+                            <div class="input-group">
+                                <span class="input-group-text">₹</span>
+                                <input type="number" class="form-control" id="section_80d" name="section_80d" 
+                                       placeholder="e.g., 25,000" min="0" value="0">
+                            </div>
+                            <div class="form-text">Medical Insurance Premium (Max: ₹1,00,000)</div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="section_24b" class="form-label">Section 24b - Housing Loan Interest</label>
+                            <div class="input-group">
+                                <span class="input-group-text">₹</span>
+                                <input type="number" class="form-control" id="section_24b" name="section_24b" 
+                                       placeholder="e.g., 2,00,000" min="0" value="0">
+                            </div>
+                            <div class="form-text">Interest paid on housing loan</div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="section_80e" class="form-label">Section 80E - Education Loan Interest</label>
+                            <div class="input-group">
+                                <span class="input-group-text">₹</span>
+                                <input type="number" class="form-control" id="section_80e" name="section_80e" 
+                                       placeholder="e.g., 50,000" min="0" value="0">
+                            </div>
+                            <div class="form-text">Interest paid on education loan (No limit)</div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="section_80g" class="form-label">Section 80G - Donations</label>
+                            <div class="input-group">
+                                <span class="input-group-text">₹</span>
+                                <input type="number" class="form-control" id="section_80g" name="section_80g" 
+                                       placeholder="e.g., 10,000" min="0" value="0">
+                            </div>
+                            <div class="form-text">Donations to specified funds/institutions</div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="section_80tta_ttb" class="form-label">Section 80TTA/80TTB - Interest</label>
+                            <div class="input-group">
+                                <span class="input-group-text">₹</span>
+                                <input type="number" class="form-control" id="section_80tta_ttb" name="section_80tta_ttb" 
+                                       placeholder="e.g., 10,000" min="0" value="0">
+                            </div>
+                            <div class="form-text">Interest from savings/fixed deposits</div>
+                        </div>
+                        
+                        <!-- Advanced Deductions (Initially Collapsed) -->
+                        <div class="col-md-12 mb-3">
+                            <button type="button" class="btn btn-sm btn-outline-secondary w-100" 
+                                    data-bs-toggle="collapse" data-bs-target="#advancedDeductions">
+                                <i class="fas fa-plus-circle me-2"></i> Show More Deduction Options
+                            </button>
+                        </div>
+                        
+                        <div id="advancedDeductions" class="collapse row">
+                            <div class="col-md-6 mb-3">
+                                <label for="section_80ccd_1b" class="form-label">Section 80CCD(1B) - NPS</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">₹</span>
+                                    <input type="number" class="form-control" id="section_80ccd_1b" name="section_80ccd_1b" 
+                                           placeholder="e.g., 50,000" min="0" value="0">
+                                </div>
+                                <div class="form-text">Additional contribution to NPS (Max: ₹50,000)</div>
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label for="section_80ddb" class="form-label">Section 80DDB - Medical Treatment</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">₹</span>
+                                    <input type="number" class="form-control" id="section_80ddb" name="section_80ddb" 
+                                           placeholder="e.g., 40,000" min="0" value="0">
+                                </div>
+                                <div class="form-text">Treatment of specified diseases</div>
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label for="section_80gg" class="form-label">Section 80GG - Rent Paid</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">₹</span>
+                                    <input type="number" class="form-control" id="section_80gg" name="section_80gg" 
+                                           placeholder="e.g., 60,000" min="0" value="0">
+                                </div>
+                                <div class="form-text">Rent paid (when HRA is not received)</div>
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label for="section_80u" class="form-label">Section 80U - Disability</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">₹</span>
+                                    <input type="number" class="form-control" id="section_80u" name="section_80u" 
+                                           placeholder="e.g., 75,000" min="0" value="0">
+                                </div>
+                                <div class="form-text">For persons with disabilities (₹75,000 to ₹1,25,000)</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Action Buttons -->
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button type="button" id="resetForm" class="btn btn-secondary">
+                            <i class="fas fa-redo me-2"></i> Reset Form
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-calculator me-2"></i> Calculate Tax
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Results Section (Initially Hidden) -->
+        <div id="resultsSection" class="card d-none">
+            <div class="card-header bg-success text-white">
+                <h4 class="card-title mb-0">
+                    <i class="fas fa-chart-pie me-2"></i>
+                    Tax Calculation Results
+                </h4>
+            </div>
+            <div class="card-body">
+                <!-- Tax Recommendation -->
+                <div id="taxRecommendation" class="alert alert-success mb-4">
+                    <i class="fas fa-check-circle me-2"></i>
+                    <span id="recommendationText">Loading recommendation...</span>
+                </div>
+                
+                <!-- Results Tabs -->
+                <ul class="nav nav-tabs mb-4" id="resultTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="comparison-tab" data-bs-toggle="tab" 
+                                data-bs-target="#comparison" type="button" role="tab" aria-selected="true">
+                            <i class="fas fa-balance-scale me-2"></i> Comparison
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="old-regime-tab" data-bs-toggle="tab" 
+                                data-bs-target="#oldRegimeTab" type="button" role="tab" aria-selected="false">
+                            <i class="fas fa-file-invoice-dollar me-2"></i> Old Regime Details
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="new-regime-tab" data-bs-toggle="tab" 
+                                data-bs-target="#newRegimeTab" type="button" role="tab" aria-selected="false">
+                            <i class="fas fa-file-invoice me-2"></i> New Regime Details
+                        </button>
+                    </li>
+                </ul>
+                
+                <div class="tab-content" id="resultTabsContent">
+                    <!-- Comparison Tab -->
+                    <div class="tab-pane fade show active" id="comparison" role="tabpanel">
+                        <div class="row">
+                            <!-- Chart -->
+                            <div class="col-lg-6">
+                                <div class="card h-100">
+                                    <div class="card-body d-flex flex-column">
+                                        <h5 class="card-title text-center mb-3">Tax Liability Comparison</h5>
+                                        <div class="flex-grow-1">
+                                            <canvas id="taxComparisonChart"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Summary Comparison -->
+                            <div class="col-lg-6">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-center mb-3">Summary Comparison</h5>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered table-striped">
+                                                <thead class="table-dark">
+                                                    <tr>
+                                                        <th>Parameter</th>
+                                                        <th>Old Regime</th>
+                                                        <th>New Regime</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Gross Income</td>
+                                                        <td><span id="oldGrossIncome">-</span></td>
+                                                        <td><span id="newGrossIncome">-</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Standard Deduction</td>
+                                                        <td><span id="oldStandardDeduction">-</span></td>
+                                                        <td><span id="newStandardDeduction">-</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Other Deductions</td>
+                                                        <td><span id="oldOtherDeductions">-</span></td>
+                                                        <td>Not Applicable</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Taxable Income</td>
+                                                        <td><span id="oldTaxableIncome">-</span></td>
+                                                        <td><span id="newTaxableIncome">-</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Tax Before Cess</td>
+                                                        <td><span id="oldTaxBeforeCess">-</span></td>
+                                                        <td><span id="newTaxBeforeCess">-</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Health & Education Cess</td>
+                                                        <td><span id="oldCess">-</span></td>
+                                                        <td><span id="newCess">-</span></td>
+                                                    </tr>
+                                                    <tr class="table-primary">
+                                                        <td><strong>Total Tax Liability</strong></td>
+                                                        <td><strong><span id="oldTaxLiability">-</span></strong></td>
+                                                        <td><strong><span id="newTaxLiability">-</span></strong></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="alert alert-info mt-3">
+                                            <i class="fas fa-info-circle me-2"></i>
+                                            <span id="taxSavingsText">Calculate to see potential tax savings.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Old Regime Tab -->
+                    <div class="tab-pane fade" id="oldRegimeTab" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title text-center mb-3">Old Tax Regime - Detailed Breakdown</h5>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h6>Income Breakdown</h6>
+                                        <table class="table table-bordered">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Gross Income</td>
+                                                    <td><span id="oldDetailGrossIncome">-</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Standard Deduction</td>
+                                                    <td><span id="oldDetailStandardDeduction">-</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Other Deductions</td>
+                                                    <td><span id="oldDetailOtherDeductions">-</span></td>
+                                                </tr>
+                                                <tr class="table-primary">
+                                                    <td><strong>Taxable Income</strong></td>
+                                                    <td><strong><span id="oldDetailTaxableIncome">-</span></strong></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    
+                                    <div class="col-md-6">
+                                        <h6>Tax Breakdown</h6>
+                                        <table class="table table-bordered">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Base Tax</td>
+                                                    <td><span id="oldDetailBaseTax">-</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Surcharge</td>
+                                                    <td><span id="oldDetailSurcharge">-</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Health & Education Cess (4%)</td>
+                                                    <td><span id="oldDetailCess">-</span></td>
+                                                </tr>
+                                                <tr class="table-primary">
+                                                    <td><strong>Total Tax Liability</strong></td>
+                                                    <td><strong><span id="oldDetailTaxLiability">-</span></strong></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-4">
+                                    <h6>Applicable Tax Slabs (Old Regime)</h6>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-sm">
+                                            <thead class="table-dark">
+                                                <tr>
+                                                    <th>Income Range</th>
+                                                    <th>Tax Rate</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="oldRegimeSlabsBody">
+                                                <!-- Will be populated dynamically based on age category -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- New Regime Tab -->
+                    <div class="tab-pane fade" id="newRegimeTab" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title text-center mb-3">New Tax Regime - Detailed Breakdown</h5>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h6>Income Breakdown</h6>
+                                        <table class="table table-bordered">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Gross Income</td>
+                                                    <td><span id="newDetailGrossIncome">-</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Standard Deduction</td>
+                                                    <td><span id="newDetailStandardDeduction">-</span></td>
+                                                </tr>
+                                                <tr class="table-primary">
+                                                    <td><strong>Taxable Income</strong></td>
+                                                    <td><strong><span id="newDetailTaxableIncome">-</span></strong></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    
+                                    <div class="col-md-6">
+                                        <h6>Tax Breakdown</h6>
+                                        <table class="table table-bordered">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Base Tax</td>
+                                                    <td><span id="newDetailBaseTax">-</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Surcharge</td>
+                                                    <td><span id="newDetailSurcharge">-</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Health & Education Cess (4%)</td>
+                                                    <td><span id="newDetailCess">-</span></td>
+                                                </tr>
+                                                <tr class="table-primary">
+                                                    <td><strong>Total Tax Liability</strong></td>
+                                                    <td><strong><span id="newDetailTaxLiability">-</span></strong></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-4">
+                                    <h6>Applicable Tax Slabs (New Regime)</h6>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-sm">
+                                            <thead class="table-dark">
+                                                <tr>
+                                                    <th>Income Range</th>
+                                                    <th>Tax Rate</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Up to ₹4,00,000</td>
+                                                    <td>0%</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>₹4,00,001 - ₹8,00,000</td>
+                                                    <td>5%</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>₹8,00,001 - ₹12,00,000</td>
+                                                    <td>10%</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>₹12,00,001 - ₹16,00,000</td>
+                                                    <td>15%</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>₹16,00,001 - ₹20,00,000</td>
+                                                    <td>20%</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>₹20,00,001 - ₹24,00,000</td>
+                                                    <td>25%</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Above ₹24,00,000</td>
+                                                    <td>30%</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    
+                                    <div class="alert alert-success mt-3">
+                                        <i class="fas fa-info-circle me-2"></i>
+                                        <strong>New Regime Benefit:</strong> No tax liability up to ₹12 lakh income (after standard deduction) due to Section 87A rebate.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<!-- Custom JS for Tax Calculator -->
+<script src="{{ url_for('static', filename='js/calculator.js') }}"></script>
+<script src="{{ url_for('static', filename='js/charts.js') }}"></script>
+{% endblock %}
