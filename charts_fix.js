@@ -1,4 +1,4 @@
-// Charts.js for Tax Calculator
+// Updated charts.js file with fixed chart creation functionality
 
 // Function to create tax comparison chart
 function createTaxComparisonChart(oldRegimeTax, newRegimeTax) {
