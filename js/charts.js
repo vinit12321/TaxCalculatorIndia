@@ -1,30 +1,42 @@
-// Charts.js for Tax Calculator
-
-// Function to create tax comparison chart
+// Create tax comparison chart
 function createTaxComparisonChart(oldRegimeTax, newRegimeTax) {
+    // Get the canvas element
     const ctx = document.getElementById('taxComparisonChart').getContext('2d');
     
-    // If chart already exists, destroy it
-    if (window.taxComparisonChart) {
-        window.taxComparisonChart.destroy();
+    // Destroy existing chart if it exists
+    if (window.taxChart instanceof Chart) {
+        window.taxChart.destroy();
     }
     
-    // Create new chart
-    window.taxComparisonChart = new Chart(ctx, {
+    // Format data for the chart
+    const labels = ['Old Regime', 'New Regime'];
+    const data = [oldRegimeTax, newRegimeTax];
+    
+    // Determine colors based on which regime has lower tax
+    let backgroundColor = [];
+    let borderColor = [];
+    
+    if (oldRegimeTax < newRegimeTax) {
+        backgroundColor = ['rgba(40, 167, 69, 0.7)', 'rgba(108, 117, 125, 0.7)']; // Green for old, gray for new
+        borderColor = ['rgb(40, 167, 69)', 'rgb(108, 117, 125)'];
+    } else if (newRegimeTax < oldRegimeTax) {
+        backgroundColor = ['rgba(108, 117, 125, 0.7)', 'rgba(40, 167, 69, 0.7)']; // Gray for old, green for new
+        borderColor = ['rgb(108, 117, 125)', 'rgb(40, 167, 69)'];
+    } else {
+        backgroundColor = ['rgba(13, 110, 253, 0.7)', 'rgba(13, 110, 253, 0.7)']; // Both blue if equal
+        borderColor = ['rgb(13, 110, 253)', 'rgb(13, 110, 253)'];
+    }
+    
+    // Create the chart
+    window.taxChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['Old Regime', 'New Regime'],
+            labels: labels,
             datasets: [{
                 label: 'Tax Liability',
-                data: [oldRegimeTax, newRegimeTax],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.7)',
-                    'rgba(54, 162, 235, 0.7)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)'
-                ],
+                data: data,
+                backgroundColor: backgroundColor,
+                borderColor: borderColor,
                 borderWidth: 1
             }]
         },
@@ -34,9 +46,19 @@ function createTaxComparisonChart(oldRegimeTax, newRegimeTax) {
             scales: {
                 y: {
                     beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Tax Amount (₹)'
+                    },
                     ticks: {
                         callback: function(value) {
-                            return '₹' + value.toLocaleString('en-IN');
+                            if (value >= 100000) {
+                                return '₹' + (value / 100000).toFixed(1) + ' Lakh';
+                            } else if (value >= 1000) {
+                                return '₹' + (value / 1000).toFixed(1) + 'K';
+                            } else {
+                                return '₹' + value;
+                            }
                         }
                     }
                 }
@@ -49,9 +71,7 @@ function createTaxComparisonChart(oldRegimeTax, newRegimeTax) {
                             if (label) {
                                 label += ': ';
                             }
-                            if (context.parsed.y !== null) {
-                                label += '₹' + context.parsed.y.toLocaleString('en-IN');
-                            }
+                            label += '₹' + context.parsed.y.toLocaleString('en-IN');
                             return label;
                         }
                     }
@@ -63,14 +83,11 @@ function createTaxComparisonChart(oldRegimeTax, newRegimeTax) {
         }
     });
     
-    // Create tax savings pie chart if there's a difference between regimes
-    if (oldRegimeTax !== newRegimeTax) {
-        createTaxSavingsPieChart(oldRegimeTax, newRegimeTax);
-    }
+    // Create pie chart showing the difference
+    createTaxSavingsPieChart(oldRegimeTax, newRegimeTax);
 }
 
-// Function to create tax savings pie chart (not used in this version, but kept for future enhancement)
+// Create pie chart showing tax savings
 function createTaxSavingsPieChart(oldRegimeTax, newRegimeTax) {
-    // Can be implemented in the future to show a more detailed breakdown
-    // of how much is saved in each regime
+    // Future enhancement - implement a pie chart showing tax savings proportion
 }

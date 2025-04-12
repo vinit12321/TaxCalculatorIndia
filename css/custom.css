@@ -1,62 +1,74 @@
-/* Custom CSS for Income Tax Calculator */
 
-/* Ad container styling */
-.ad-container {
-    padding: 10px;
-    background-color: rgba(0, 0, 0, 0.05);
-    border-radius: 0.25rem;
-    margin: 15px 0;
-}
-
-/* Additional styling for charts */
-canvas {
+/* Chart container styles */
+#taxComparisonChart {
+    max-height: 400px !important;
     width: 100% !important;
-    height: auto !important;
-    min-height: 250px;
+    margin: 20px 0;
 }
 
-/* Improve table readability */
-.table-responsive {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+/* Custom styles for the tax calculator */
+
+/* Main container styles */
+.container {
+    max-width: 1200px;
 }
 
-/* Form styling */
+/* General form styling */
 .form-label {
     font-weight: 500;
 }
 
-.form-text {
-    font-size: 0.8rem;
+.input-group-text {
+    min-width: 40px;
+    justify-content: center;
 }
 
-/* Sticky footer */
-html, body {
-    height: 100%;
+/* Results section styling */
+#resultsSection {
+    transition: all 0.3s ease;
 }
 
-body {
-    display: flex;
-    flex-direction: column;
-}
-
-.footer {
-    margin-top: auto;
-}
-
-/* Additional spacing and styling */
+/* Card styling */
 .card {
-    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.2);
     margin-bottom: 1.5rem;
 }
 
 .card-header {
-    border-bottom: 0;
+    border-radius: 0.5rem 0.5rem 0 0;
 }
 
-/* Improve form elements spacing */
-.input-group {
-    margin-bottom: 0.25rem;
+/* Table styling */
+.table-bordered {
+    border-color: var(--bs-border-color);
+}
+
+/* Chart container */
+canvas {
+    min-height: 300px;
+}
+
+/* Custom alert styling */
+.alert {
+    border-radius: 0.5rem;
+}
+
+/* Tab styling */
+.nav-tabs .nav-link {
+    border-radius: 0.25rem 0.25rem 0 0;
+    padding: 0.5rem 1rem;
+}
+
+.nav-tabs .nav-link.active {
+    font-weight: 500;
+}
+
+/* Footer styling */
+.footer {
+    margin-top: 3rem;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--bs-border-color);
 }
 
 /* Responsive adjustments */
@@ -65,11 +77,45 @@ body {
         font-size: 1.25rem;
     }
     
-    h4.card-title {
-        font-size: 1.5rem;
+    .table-responsive {
+        font-size: 0.875rem;
+    }
+}
+
+/* Print styles */
+@media print {
+    .no-print {
+        display: none;
     }
     
-    .table th, .table td {
-        padding: 0.5rem;
+    .card {
+        box-shadow: none;
+        border: 1px solid #dee2e6;
     }
+    
+    .container {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+/* Smooth transitions for tab content */
+.tab-pane.fade {
+    transition: opacity 0.15s linear;
+}
+
+/* Currency input formatting */
+input[type="number"] {
+    text-align: right;
+}
+
+/* Hover effect for cards */
+.card:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    transition: box-shadow 0.3s ease;
+}
+
+/* Make table row headers bolder */
+.table td:first-child {
+    font-weight: 500;
 }
