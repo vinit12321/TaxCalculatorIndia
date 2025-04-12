@@ -306,6 +306,12 @@ function displayResults(data) {
     `;
     taxSavingsText.className = recommendedRegime === 'new' ? 'alert alert-success' : 'alert alert-info';
     
-    // Create charts
-    createTaxComparisonChart(oldRegime.taxLiability, newRegime.taxLiability);
+    // Ensure results section is visible before creating charts
+    document.getElementById('resultsSection').classList.remove('d-none');
+    
+    // Add a small delay to ensure DOM is ready for chart creation
+    setTimeout(() => {
+        // Create charts
+        createTaxComparisonChart(oldRegime.taxLiability, newRegime.taxLiability);
+    }, 100);
 }
