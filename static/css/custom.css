@@ -1,3 +1,11 @@
+
+/* Chart container styles */
+#taxComparisonChart {
+    max-height: 400px !important;
+    width: 100% !important;
+    margin: 20px 0;
+}
+
 /* Custom styles for the tax calculator */
 
 /* Main container styles */

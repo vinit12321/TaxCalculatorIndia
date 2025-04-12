@@ -1,3 +1,4 @@
+
 // Create tax comparison chart
 function createTaxComparisonChart(oldRegimeTax, newRegimeTax) {
     // Get the canvas element
@@ -17,13 +18,13 @@ function createTaxComparisonChart(oldRegimeTax, newRegimeTax) {
     let borderColor = [];
     
     if (oldRegimeTax < newRegimeTax) {
-        backgroundColor = ['rgba(40, 167, 69, 0.7)', 'rgba(108, 117, 125, 0.7)']; // Green for old, gray for new
+        backgroundColor = ['rgba(40, 167, 69, 0.7)', 'rgba(108, 117, 125, 0.7)'];
         borderColor = ['rgb(40, 167, 69)', 'rgb(108, 117, 125)'];
     } else if (newRegimeTax < oldRegimeTax) {
-        backgroundColor = ['rgba(108, 117, 125, 0.7)', 'rgba(40, 167, 69, 0.7)']; // Gray for old, green for new
+        backgroundColor = ['rgba(108, 117, 125, 0.7)', 'rgba(40, 167, 69, 0.7)'];
         borderColor = ['rgb(108, 117, 125)', 'rgb(40, 167, 69)'];
     } else {
-        backgroundColor = ['rgba(13, 110, 253, 0.7)', 'rgba(13, 110, 253, 0.7)']; // Both blue if equal
+        backgroundColor = ['rgba(13, 110, 253, 0.7)', 'rgba(13, 110, 253, 0.7)'];
         borderColor = ['rgb(13, 110, 253)', 'rgb(13, 110, 253)'];
     }
     
@@ -42,7 +43,25 @@ function createTaxComparisonChart(oldRegimeTax, newRegimeTax) {
         },
         options: {
             responsive: true,
-            maintainAspectRatio: false,
+            maintainAspectRatio: true,
+            aspectRatio: 2,
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.dataset.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            label += '₹' + context.parsed.y.toLocaleString('en-IN');
+                            return label;
+                        }
+                    }
+                },
+                legend: {
+                    display: false
+                }
+            },
             scales: {
                 y: {
                     beginAtZero: true,
@@ -61,23 +80,6 @@ function createTaxComparisonChart(oldRegimeTax, newRegimeTax) {
                             }
                         }
                     }
-                }
-            },
-            plugins: {
-                tooltip: {
-                    callbacks: {
-                        label: function(context) {
-                            let label = context.dataset.label || '';
-                            if (label) {
-                                label += ': ';
-                            }
-                            label += '₹' + context.parsed.y.toLocaleString('en-IN');
-                            return label;
-                        }
-                    }
-                },
-                legend: {
-                    display: false
                 }
             }
         }
