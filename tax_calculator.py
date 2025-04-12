@@ -31,149 +31,117 @@ def calculate_tax(annual_salary, age_category, deductions):
 
 def calculate_old_regime_tax(annual_salary, age_category, deductions):
     """Calculate tax under the old regime"""
-    # Standard deduction based on age
-    standard_deduction = 50000  # Default for below 60 years
-    if age_category == '60_to_80' or age_category == 'above_80':
-        standard_deduction = 100000  # Increased for senior citizens as per latest budget
-    
-    # Calculate total deductions
-    total_deductions = standard_deduction
-    for key, value in deductions.items():
-        total_deductions += value
-    
-    # Special handling for 80C, 80CCC, and 80CCD(1) combined limit of 1.5 lakh
-    section_80c_combined = min(deductions['section_80c'], 150000)
+    # Calculate total deductions for old regime
+    total_eligible_deductions = calculate_eligible_deductions(deductions)
     
     # Calculate taxable income
-    taxable_income = max(0, annual_salary - standard_deduction - calculate_eligible_deductions(deductions))
+    taxable_income = max(0, annual_salary - total_eligible_deductions)
     
-    # Apply tax slabs based on age category
+    # Apply tax slabs based on the updated document
     tax = 0
     
-    if age_category == 'below_60':
-        # For individuals below 60 years
-        if taxable_income <= 250000:
-            tax = 0
-        elif taxable_income <= 500000:
-            tax = (taxable_income - 250000) * 0.05
-        elif taxable_income <= 1000000:
-            tax = 12500 + (taxable_income - 500000) * 0.2
-        else:
-            tax = 12500 + 100000 + (taxable_income - 1000000) * 0.3
-    
-    elif age_category == '60_to_80':
-        # For senior citizens (60 to 80 years)
-        if taxable_income <= 300000:
-            tax = 0
-        elif taxable_income <= 500000:
-            tax = (taxable_income - 300000) * 0.05
-        elif taxable_income <= 1000000:
-            tax = 10000 + (taxable_income - 500000) * 0.2
-        else:
-            tax = 10000 + 100000 + (taxable_income - 1000000) * 0.3
-    
-    elif age_category == 'above_80':
-        # For super senior citizens (above 80 years)
-        if taxable_income <= 500000:
-            tax = 0
-        elif taxable_income <= 1000000:
-            tax = (taxable_income - 500000) * 0.2
-        else:
-            tax = 100000 + (taxable_income - 1000000) * 0.3
-    
-    # Apply rebate u/s 87A (for income up to 5 lakhs)
-    if taxable_income <= 500000:
+    # First ₹2,50,000 (₹0 to ₹2,50,000): 0% tax
+    if taxable_income <= 250000:
         tax = 0
+    else:
+        tax += 0  # 0% of first 250000
+        
+        # Next ₹2,50,000 (₹2,50,001 to ₹5,00,000): 5% tax
+        if taxable_income <= 500000:
+            tax += (taxable_income - 250000) * 0.05
+        else:
+            tax += 250000 * 0.05  # 5% of 250000 = 12500
+            
+            # Next ₹5,00,000 (₹5,00,001 to ₹10,00,000): 20% tax
+            if taxable_income <= 1000000:
+                tax += (taxable_income - 500000) * 0.2
+            else:
+                tax += 500000 * 0.2  # 20% of 500000 = 100000
+                
+                # Above ₹10,00,000: 30% tax
+                tax += (taxable_income - 1000000) * 0.3
     
-    # Calculate surcharge
-    surcharge = 0
-    if taxable_income > 5000000 and taxable_income <= 10000000:
-        surcharge = tax * 0.1
-    elif taxable_income > 10000000 and taxable_income <= 20000000:
-        surcharge = tax * 0.15
-    elif taxable_income > 20000000 and taxable_income <= 50000000:
-        surcharge = tax * 0.25
-    elif taxable_income > 50000000:
-        surcharge = tax * 0.37
-    
-    # Add health and education cess (4%)
-    cess = (tax + surcharge) * 0.04
+    # Calculate health and education cess (4%)
+    cess = tax * 0.04
     
     # Calculate total tax liability
-    tax_liability = tax + surcharge + cess
+    tax_liability = tax + cess
     
     return {
         'gross_income': annual_salary,
-        'standard_deduction': standard_deduction,
-        'other_deductions': calculate_eligible_deductions(deductions),
+        'standard_deduction': 0,  # As per the new example, standard deduction is part of total deductions
+        'other_deductions': total_eligible_deductions,
         'taxable_income': taxable_income,
-        'tax_before_cess': tax + surcharge,
+        'tax_before_cess': tax,
         'cess': cess,
         'tax_liability': tax_liability,
         'breakdown': {
             'base_tax': tax,
-            'surcharge': surcharge,
+            'surcharge': 0,  # No surcharge in the simplified example
             'cess': cess
         }
     }
 
 def calculate_new_regime_tax(annual_salary):
     """Calculate tax under the new regime"""
-    # Standard deduction for all age groups
-    standard_deduction = 75000
+    # Standard deduction is not considered in the new example - using full annual salary
+    standard_deduction = 0
     
-    # Calculate taxable income
-    taxable_income = max(0, annual_salary - standard_deduction)
+    # Calculate taxable income (no deductions in new regime)
+    taxable_income = annual_salary
     
-    # Apply tax slabs for new regime
+    # Apply tax slabs for new regime as per the updated document
     tax = 0
     
-    if taxable_income <= 400000:
+    # First ₹3,00,000 (₹0 to ₹3,00,000): 0% tax
+    if taxable_income <= 300000:
         tax = 0
-    elif taxable_income <= 800000:
-        tax = (taxable_income - 400000) * 0.05
-    elif taxable_income <= 1200000:
-        tax = 20000 + (taxable_income - 800000) * 0.1
-    elif taxable_income <= 1600000:
-        tax = 20000 + 40000 + (taxable_income - 1200000) * 0.15
-    elif taxable_income <= 2000000:
-        tax = 20000 + 40000 + 60000 + (taxable_income - 1600000) * 0.2
-    elif taxable_income <= 2400000:
-        tax = 20000 + 40000 + 60000 + 80000 + (taxable_income - 2000000) * 0.25
     else:
-        tax = 20000 + 40000 + 60000 + 80000 + 100000 + (taxable_income - 2400000) * 0.3
+        tax += 0  # 0% of first 300000
+        
+        # Next ₹3,00,000 (₹3,00,001 to ₹6,00,000): 5% tax
+        if taxable_income <= 600000:
+            tax += (taxable_income - 300000) * 0.05
+        else:
+            tax += 300000 * 0.05  # 5% of 300000 = 15000
+            
+            # Next ₹3,00,000 (₹6,00,001 to ₹9,00,000): 10% tax
+            if taxable_income <= 900000:
+                tax += (taxable_income - 600000) * 0.1
+            else:
+                tax += 300000 * 0.1  # 10% of 300000 = 30000
+                
+                # Next ₹3,00,000 (₹9,00,001 to ₹12,00,000): 15% tax
+                if taxable_income <= 1200000:
+                    tax += (taxable_income - 900000) * 0.15
+                else:
+                    tax += 300000 * 0.15  # 15% of 300000 = 45000
+                    
+                    # Next ₹3,00,000 (₹12,00,001 to ₹15,00,000): 20% tax
+                    if taxable_income <= 1500000:
+                        tax += (taxable_income - 1200000) * 0.2
+                    else:
+                        tax += 300000 * 0.2  # 20% of 300000 = 60000
+                        
+                        # Above ₹15,00,000: 30% tax
+                        tax += (taxable_income - 1500000) * 0.3
     
-    # Apply rebate u/s 87A (for income up to 12 lakhs in new regime)
-    if taxable_income <= 1200000:
-        tax = 0
-    
-    # Calculate surcharge (capped at 25% in new regime)
-    surcharge = 0
-    if taxable_income > 5000000 and taxable_income <= 10000000:
-        surcharge = tax * 0.1
-    elif taxable_income > 10000000 and taxable_income <= 20000000:
-        surcharge = tax * 0.15
-    elif taxable_income > 20000000 and taxable_income <= 50000000:
-        surcharge = tax * 0.25
-    elif taxable_income > 50000000:
-        surcharge = tax * 0.25  # Capped at 25% in new regime
-    
-    # Add health and education cess (4%)
-    cess = (tax + surcharge) * 0.04
+    # Calculate health and education cess (4%)
+    cess = tax * 0.04
     
     # Calculate total tax liability
-    tax_liability = tax + surcharge + cess
+    tax_liability = tax + cess
     
     return {
         'gross_income': annual_salary,
         'standard_deduction': standard_deduction,
         'taxable_income': taxable_income,
-        'tax_before_cess': tax + surcharge,
+        'tax_before_cess': tax,
         'cess': cess,
         'tax_liability': tax_liability,
         'breakdown': {
             'base_tax': tax,
-            'surcharge': surcharge,
+            'surcharge': 0,  # No surcharge in the example
             'cess': cess
         }
     }

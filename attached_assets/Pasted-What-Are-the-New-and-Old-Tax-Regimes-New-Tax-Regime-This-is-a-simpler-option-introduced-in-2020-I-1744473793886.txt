@@ -1,0 +1,184 @@
+What Are the New and Old Tax Regimes?
+New Tax Regime: This is a simpler option introduced in 2020. It has lower tax rates, but you can’t claim most deductions (like investments or medical insurance). It’s great if you don’t have many deductions.
+Old Tax Regime: This is the traditional system. It has higher tax rates but lets you reduce your taxable income with deductions (like savings under Section 80C or house rent allowance). It’s better if you have significant deductions.
+You can pick whichever regime saves you more money.
+
+New Tax Regime: Calculation for ₹26,00,000
+In the new tax regime, your income is split into slabs, and each slab has a different tax rate. You don’t get any deductions, so we use the full ₹26,00,000 for the calculation. Here’s how it works:
+
+Tax Slabs for New Regime
+₹0 to ₹3,00,000: 0% tax (no tax)
+₹3,00,001 to ₹6,00,000: 5% tax
+₹6,00,001 to ₹9,00,000: 10% tax
+₹9,00,001 to ₹12,00,000: 15% tax
+₹12,00,001 to ₹15,00,000: 20% tax
+Above ₹15,00,000: 30% tax
+Formula in Simple English
+The formula is:
+
+Tax = (Tax rate × Income in each slab) added up for all slabs + 4% cess on the total tax.
+
+We break your income into parts based on these slabs and calculate the tax for each part.
+
+Step-by-Step Calculation
+Let’s apply this to ₹26,00,000:
+
+First ₹3,00,000 (₹0 to ₹3,00,000):
+Tax rate = 0%
+Tax = 0% of ₹3,00,000 = ₹0
+Next ₹3,00,000 (₹3,00,001 to ₹6,00,000):
+Tax rate = 5%
+Tax = 5% of ₹3,00,000 = ₹15,000
+(To calculate: ₹3,00,000 × 5 ÷ 100 = ₹15,000)
+Next ₹3,00,000 (₹6,00,001 to ₹9,00,000):
+Tax rate = 10%
+Tax = 10% of ₹3,00,000 = ₹30,000
+(₹3,00,000 × 10 ÷ 100 = ₹30,000)
+Next ₹3,00,000 (₹9,00,001 to ₹12,00,000):
+Tax rate = 15%
+Tax = 15% of ₹3,00,000 = ₹45,000
+(₹3,00,000 × 15 ÷ 100 = ₹45,000)
+Next ₹3,00,000 (₹12,00,001 to ₹15,00,000):
+Tax rate = 20%
+Tax = 20% of ₹3,00,000 = ₹60,000
+(₹3,00,000 × 20 ÷ 100 = ₹60,000)
+Remaining ₹11,00,000 (₹15,00,001 to ₹26,00,000):
+Total income = ₹26,00,000
+Income taxed so far = ₹15,00,000 (₹3,00,000 + ₹3,00,000 + ₹3,00,000 + ₹3,00,000 + ₹3,00,000)
+Remaining = ₹26,00,000 - ₹15,00,000 = ₹11,00,000
+Tax rate = 30%
+Tax = 30% of ₹11,00,000 = ₹3,30,000
+(₹11,00,000 × 30 ÷ 100 = ₹3,30,000)
+Total Tax Before Cess
+Add up the tax from each slab:
+
+₹0 + ₹15,000 + ₹30,000 + ₹45,000 + ₹60,000 + ₹3,30,000 = ₹4,80,000
+
+Add 4% Cess
+There’s an extra 4% health and education cess on the total tax:
+
+Cess = 4% of ₹4,80,000
+Cess = ₹4,80,000 × 4 ÷ 100 = ₹19,200
+Final Tax under New Regime
+Total tax = Tax before cess + Cess
+
+₹4,80,000 + ₹19,200 = ₹4,99,200
+
+So, under the new tax regime, your tax for ₹26,00,000 is ₹4,99,200.
+
+Old Tax Regime: Calculation for ₹26,00,000
+In the old tax regime, the slabs are different, and you can lower your taxable income with deductions. I’ll show you two scenarios: one without deductions and one with some deductions, so you see how it works.
+
+Tax Slabs for Old Regime
+₹0 to ₹2,50,000: 0% tax (no tax)
+₹2,50,001 to ₹5,00,000: 5% tax
+₹5,00,001 to ₹10,00,000: 20% tax
+Above ₹10,00,000: 30% tax
+Formula in Simple English
+The formula is:
+
+Tax = (Tax rate × Income in each slab) added up for all slabs + 4% cess on the total tax.
+
+But first, you subtract your deductions from your total income to get your taxable income, then apply the slabs to that amount.
+
+Scenario 1: No Deductions
+Let’s calculate for ₹26,00,000 without any deductions.
+
+Step-by-Step Calculation
+First ₹2,50,000 (₹0 to ₹2,50,000):
+Tax rate = 0%
+Tax = 0% of ₹2,50,000 = ₹0
+Next ₹2,50,000 (₹2,50,001 to ₹5,00,000):
+Tax rate = 5%
+Tax = 5% of ₹2,50,000 = ₹12,500
+(₹2,50,000 × 5 ÷ 100 = ₹12,500)
+Next ₹5,00,000 (₹5,00,001 to ₹10,00,000):
+Tax rate = 20%
+Tax = 20% of ₹5,00,000 = ₹1,00,000
+(₹5,00,000 × 20 ÷ 100 = ₹1,00,000)
+Remaining ₹16,00,000 (₹10,00,001 to ₹26,00,000):
+Total income = ₹26,00,000
+Income taxed so far = ₹10,00,000 (₹2,50,000 + ₹2,50,000 + ₹5,00,000)
+Remaining = ₹26,00,000 - ₹10,00,000 = ₹16,00,000
+Tax rate = 30%
+Tax = 30% of ₹16,00,000 = ₹4,80,000
+(₹16,00,000 × 30 ÷ 100 = ₹4,80,000)
+Total Tax Before Cess
+Add up the tax from each slab:
+
+₹0 + ₹12,500 + ₹1,00,000 + ₹4,80,000 = ₹5,92,500
+
+Add 4% Cess
+Cess = 4% of ₹5,92,500
+
+Cess = ₹5,92,500 × 4 ÷ 100 = ₹23,700
+
+Final Tax Without Deductions
+Total tax = ₹5,92,500 + ₹23,700 = ₹6,16,200
+
+So, without deductions, your tax is ₹6,16,200, which is higher than the new regime’s ₹4,99,200.
+
+Scenario 2: With ₹3,00,000 Deductions
+Now, let’s say you have deductions worth ₹3,00,000 (e.g., ₹1,50,000 under Section 80C for investments, ₹50,000 standard deduction, and ₹1,00,000 for house rent allowance).
+
+Taxable income = Total income - Deductions
+Taxable income = ₹26,00,000 - ₹3,00,000 = ₹23,00,000
+Step-by-Step Calculation
+First ₹2,50,000:
+Tax rate = 0%
+Tax = ₹0
+Next ₹2,50,000 (₹2,50,001 to ₹5,00,000):
+Tax rate = 5%
+Tax = 5% of ₹2,50,000 = ₹12,500
+Next ₹5,00,000 (₹5,00,001 to ₹10,00,000):
+Tax rate = 20%
+Tax = 20% of ₹5,00,000 = ₹1,00,000
+Remaining ₹13,00,000 (₹10,00,001 to ₹23,00,000):
+Total taxable income = ₹23,00,000
+Income taxed so far = ₹10,00,000
+Remaining = ₹23,00,000 - ₹10,00,000 = ₹13,00,000
+Tax rate = 30%
+Tax = 30% of ₹13,00,000 = ₹3,90,000
+(₹13,00,000 × 30 ÷ 100 = ₹3,90,000)
+Total Tax Before Cess
+₹0 + ₹12,500 + ₹1,00,000 + ₹3,90,000 = ₹5,02,500
+
+Add 4% Cess
+Cess = 4% of ₹5,02,500 = ₹20,100
+
+Final Tax With ₹3,00,000 Deductions
+Total tax = ₹5,02,500 + ₹20,100 = ₹5,22,600
+
+This is still higher than the new regime’s ₹4,99,200.
+
+Scenario 3: With ₹5,00,000 Deductions
+If your deductions are ₹5,00,000:
+
+Taxable income = ₹26,00,000 - ₹5,00,000 = ₹21,00,000
+Step-by-Step Calculation
+First ₹2,50,000: ₹0
+Next ₹2,50,000: 5% of ₹2,50,000 = ₹12,500
+Next ₹5,00,000: 20% of ₹5,00,000 = ₹1,00,000
+Remaining ₹11,00,000 (₹10,00,001 to ₹21,00,000):
+Remaining = ₹21,00,000 - ₹10,00,000 = ₹11,00,000
+Tax = 30% of ₹11,00,000 = ₹3,30,000
+Total Tax Before Cess
+₹0 + ₹12,500 + ₹1,00,000 + ₹3,30,000 = ₹4,42,500
+
+Add 4% Cess
+Cess = 4% of ₹4,42,500 = ₹17,700
+
+Final Tax With ₹5,00,000 Deductions
+Total tax = ₹4,42,500 + ₹17,700 = ₹4,60,200
+
+Now, this is lower than the new regime’s ₹4,99,200.
+
+Summary of Taxes
+New Regime: ₹4,99,200 (no deductions allowed)
+Old Regime:
+No deductions: ₹6,16,200
+₹3,00,000 deductions: ₹5,22,600
+₹5,00,000 deductions: ₹4,60,200
+Logic in Simple Terms
+New Regime: You pay tax on your full income using the slabs. It’s straightforward but doesn’t let you reduce your income.
+Old Regime: You subtract deductions first, then pay tax on what’s left using different slabs. The more deductions you have, the less tax you pay.
