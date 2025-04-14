@@ -1,0 +1,128 @@
+3 𝕏 posts
+
+
+
+25 web pages
+To calculate the income tax for a taxable income of ₹26,00,000 for the Financial Year (FY) 2025-26 (Assessment Year 2026-27) under both the new tax regime and the old tax regime in India, we need to consider the applicable tax slabs, deductions, and cess. The new regime has lower tax rates but fewer deductions, while the old regime allows more deductions but has higher tax rates. Since you mentioned "with declaration possible," I’ll assume you’re referring to common deductions available under the old regime, such as those under Section 80C, 80D, etc., and I’ll outline a reasonable set of deductions for clarity. If you have specific deductions in mind, please share them for a more precise calculation.
+
+1. New Tax Regime (FY 2025-26)
+The new tax regime is the default regime as per the Finance Act 2024, with updated slabs announced in Budget 2025. It offers lower tax rates but limits deductions to a standard deduction of ₹75,000 for salaried individuals and a few others, like employer’s contribution to NPS under Section 80CCD(2). Since you’ve specified "taxable income" of ₹26,00,000, I’ll assume this is the net taxable income after applying any applicable standard deduction (if salaried). If you meant gross income, let me know, and I can adjust the calculation.
+
+Tax Slabs for New Regime (Individuals, all ages):
+Up to ₹4,00,000: Nil
+₹4,00,001 to ₹8,00,000: 5% on income above ₹4,00,000
+₹8,00,001 to ₹12,00,000: 10% on income above ₹8,00,000
+₹12,00,001 to ₹16,00,000: 15% on income above ₹12,00,000
+₹16,00,001 to ₹20,00,000: 20% on income above ₹16,00,000
+₹20,00,001 to ₹24,00,000: 25% on income above ₹20,00,000
+Above ₹24,00,000: 30% on income above ₹24,00,000
+Rebate under Section 87A: Full tax rebate of up to ₹60,000 for taxable income up to ₹12,00,000. Since your income exceeds ₹12,00,000, no rebate applies.
+
+Standard Deduction: ₹75,000 for salaried individuals (assumed applicable unless you confirm otherwise).
+
+Surcharge:
+
+10% of tax if total income exceeds ₹50 lakh.
+15% of tax if total income exceeds ₹1 crore.
+Since your income is ₹26,00,000, no surcharge applies.
+Cess: Health and Education Cess at 4% on the tax amount.
+
+Calculation (New Regime):
+Assuming ₹26,00,000 is the taxable income (after standard deduction, if applicable):
+
+Income up to ₹4,00,000: ₹0 (Nil)
+₹4,00,001 to ₹8,00,000: 5% of ₹4,00,000 = ₹20,000
+₹8,00,001 to ₹12,00,000: 10% of ₹4,00,000 = ₹40,000
+₹12,00,001 to ₹16,00,000: 15% of ₹4,00,000 = ₹60,000
+₹16,00,001 to ₹20,00,000: 20% of ₹4,00,000 = ₹80,000
+₹20,00,001 to ₹24,00,000: 25% of ₹4,00,000 = ₹1,00,000
+₹24,00,001 to ₹26,00,000: 30% of ₹2,00,000 = ₹60,000
+Total Tax: ₹20,000 + ₹40,000 + ₹60,000 + ₹80,000 + ₹1,00,000 + ₹60,000 = ₹3,60,000
+
+Cess: 4% of ₹3,60,000 = ₹14,400
+
+Total Tax Liability: ₹3,60,000 + ₹14,400 = ₹3,74,400
+
+Note: If ₹26,00,000 is your gross income (before standard deduction), and you’re salaried, subtract ₹75,000 to get taxable income of ₹25,25,000. The tax would then be:
+
+Up to ₹24,00,000: ₹3,00,000 (as above)
+₹24,00,001 to ₹25,25,000: 30% of ₹1,25,000 = ₹37,500
+Total Tax: ₹3,00,000 + ₹37,500 = ₹3,37,500
+Cess: 4% of ₹3,37,500 = ₹13,500
+Total Tax Liability: ₹3,37,500 + ₹13,500 = ₹3,51,000
+For simplicity, assuming ₹26,00,000 as taxable income, the tax is ₹3,74,400.
+
+2. Old Tax Regime (FY 2025-26)
+The old tax regime allows various deductions and exemptions, which can significantly reduce taxable income. The tax rates are higher, but deductions like Section 80C, 80D, HRA, and standard deduction can make it beneficial depending on your investments and expenses.
+
+Tax Slabs for Old Regime (Individuals below 60 years):
+Up to ₹2,50,000: Nil
+₹2,50,001 to ₹5,00,000: 5% on income above ₹2,50,000
+₹5,00,001 to ₹10,00,000: 20% on income above ₹5,00,000
+Above ₹10,00,000: 30% on income above ₹10,00,000
+Rebate under Section 87A: Up to ₹12,500 for taxable income up to ₹5,00,000. Since your income exceeds ₹5,00,000, no rebate applies.
+
+Surcharge: Same as new regime (none for ₹26,00,000).
+
+Cess: 4% on tax amount.
+
+Common Deductions (Assumed for “Declaration Possible”):
+Since you haven’t specified deductions, I’ll assume typical declarations for a salaried individual:
+
+Standard Deduction: ₹50,000 (for salaried individuals).
+Section 80C: Up to ₹1,50,000 (e.g., PPF, ELSS, life insurance, EPF).
+Section 80D: ₹25,000 (health insurance premium for self/family; ₹50,000 if senior citizen parents are covered, but assuming you’re below 60).
+Section 80CCD(1B): ₹50,000 (additional NPS contribution, if applicable).
+HRA Exemption: Depends on rent paid, city, and salary structure. I’ll exclude HRA unless you confirm rent details, as it requires specific inputs.
+Section 24(b): Up to ₹2,00,000 for interest on home loan for self-occupied property (if applicable; I’ll exclude unless confirmed).
+Let’s assume:
+
+Standard Deduction: ₹50,000
+Section 80C: ₹1,50,000
+Section 80D: ₹25,000
+Section 80CCD(1B): ₹50,000
+Total Deductions: ₹50,000 + ₹1,50,000 + ₹25,000 + ₹50,000 = ₹3,25,000
+
+Calculation (Old Regime):
+Gross Taxable Income: ₹26,00,000
+Deductions: ₹3,25,000
+Net Taxable Income: ₹26,00,000 - ₹3,25,000 = ₹22,75,000
+Tax on ₹22,75,000:
+
+Up to ₹2,50,000: ₹0 (Nil)
+₹2,50,001 to ₹5,00,000: 5% of ₹2,50,000 = ₹12,500
+₹5,00,001 to ₹10,00,000: 20% of ₹5,00,000 = ₹1,00,000
+₹10,00,001 to ₹22,75,000: 30% of ₹12,75,000 = ₹3,82,500
+Total Tax: ₹12,500 + ₹1,00,000 + ₹3,82,500 = ₹4,95,000
+
+Cess: 4% of ₹4,95,000 = ₹19,800
+
+Total Tax Liability: ₹4,95,000 + ₹19,800 = ₹5,14,800
+
+Note: If you have additional deductions (e.g., home loan interest up to ₹2,00,000, HRA, or higher 80D for senior parents), the taxable income could reduce further. For example:
+
+Add ₹2,00,000 (home loan interest): Deductions = ₹3,25,000 + ₹2,00,000 = ₹5,25,000
+Net Taxable Income: ₹26,00,000 - ₹5,25,000 = ₹20,75,000
+Tax: ₹12,500 + ₹1,00,000 + 30% of ₹10,75,000 (₹3,22,500) = ₹4,35,000
+Cess: 4% of ₹4,35,000 = ₹17,400
+Total Tax: ₹4,35,000 + ₹17,400 = ₹4,52,400
+Comparison
+New Regime Tax: ₹3,74,400 (assuming ₹26,00,000 is taxable income after standard deduction)
+Old Regime Tax: ₹5,14,800 (with ₹3,25,000 deductions); potentially ₹4,52,400 with ₹5,25,000 deductions including home loan interest.
+Which is Better?
+The new regime is clearly more beneficial for ₹26,00,000 taxable income, saving you at least ₹1,40,400 (₹5,14,800 - ₹3,74,400) compared to the old regime with standard deductions.
+Even with higher deductions in the old regime (e.g., ₹5,25,000), the new regime saves ₹78,000 (₹4,52,400 - ₹3,74,400).
+To make the old regime equal or better, you’d need deductions exceeding ₹7,00,000, which is possible with significant HRA, home loan interest, or other exemptions, but uncommon without specific circumstances (e.g., high rent in a metro city or large loan interest).
+Assumptions and Clarifications
+Taxable Income: I assumed ₹26,00,000 is the net taxable income (after basic exemptions but before regime-specific deductions). If it’s gross income, the new regime tax would be lower (e.g., ₹3,51,000 if salaried with standard deduction).
+Age: Assumed below 60 years, as tax slabs differ for senior citizens (60-80 years) and super senior citizens (>80 years) in the old regime.
+Residential Status: Assumed resident individual, as non-residents have different rules.
+Deductions: Used common deductions (₹3,25,000) for the old regime. If you have specific deductions (e.g., HRA, higher 80D, donations under 80G, or home loan interest), share them for a tailored calculation.
+No Capital Gains: Assumed income is from salary or other sources, not capital gains, which have special rates.
+No Surcharge: Income below ₹50 lakh, so no surcharge applies.
+Final Answer
+For a taxable income of ₹26,00,000 in FY 2025-26:
+
+New Regime: Income tax = ₹3,74,400
+Old Regime: Income tax = ₹5,14,800 (with ₹3,25,000 deductions); potentially ₹4,52,400 with ₹5,25,000 deductions (including home loan interest).
+The new regime is likely better unless you have significant deductions (e.g., >₹7,00,000). Please confirm if ₹26,00,000 is gross or taxable income, your salary structure, specific deductions, or other details for a more precise answer
