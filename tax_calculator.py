@@ -1,25 +1,25 @@
 def calculate_tax(annual_salary, age_category, deductions):
     """
     Calculate income tax under both old and new regimes for FY 2025-26
-    
+
     Parameters:
     annual_salary (float): Annual gross salary
     age_category (str): Age category ('below_60', '60_to_80', 'above_80')
     deductions (dict): Dictionary containing various deduction amounts
-    
+
     Returns:
     dict: Dictionary containing tax calculations for both regimes
     """
     # Calculate tax under old regime
     old_regime = calculate_old_regime_tax(annual_salary, age_category, deductions)
-    
+
     # Calculate tax under new regime
     new_regime = calculate_new_regime_tax(annual_salary)
-    
+
     # Determine which regime is better
     recommended_regime = "new" if new_regime['tax_liability'] <= old_regime['tax_liability'] else "old"
     tax_savings = abs(old_regime['tax_liability'] - new_regime['tax_liability'])
-    
+
     # Return results
     return {
         'status': 'success',
@@ -33,40 +33,40 @@ def calculate_old_regime_tax(annual_salary, age_category, deductions):
     """Calculate tax under the old regime"""
     # Calculate total deductions for old regime
     total_eligible_deductions = calculate_eligible_deductions(deductions)
-    
+
     # Calculate taxable income
     taxable_income = max(0, annual_salary - total_eligible_deductions)
-    
+
     # Apply tax slabs based on the updated document
     tax = 0
-    
+
     # First ₹2,50,000 (₹0 to ₹2,50,000): 0% tax
     if taxable_income <= 250000:
         tax = 0
     else:
         tax += 0  # 0% of first 250000
-        
+
         # Next ₹2,50,000 (₹2,50,001 to ₹5,00,000): 5% tax
         if taxable_income <= 500000:
             tax += (taxable_income - 250000) * 0.05
         else:
             tax += 250000 * 0.05  # 5% of 250000 = 12500
-            
+
             # Next ₹5,00,000 (₹5,00,001 to ₹10,00,000): 20% tax
             if taxable_income <= 1000000:
                 tax += (taxable_income - 500000) * 0.2
             else:
                 tax += 500000 * 0.2  # 20% of 500000 = 100000
-                
+
                 # Above ₹10,00,000: 30% tax
                 tax += (taxable_income - 1000000) * 0.3
-    
+
     # Calculate health and education cess (4%)
     cess = tax * 0.04
-    
+
     # Calculate total tax liability
     tax_liability = tax + cess
-    
+
     return {
         'gross_income': annual_salary,
         'standard_deduction': 0,  # As per the new example, standard deduction is part of total deductions
@@ -86,52 +86,36 @@ def calculate_new_regime_tax(annual_salary):
     """Calculate tax under the new regime"""
     # Standard deduction is not considered in the new example - using full annual salary
     standard_deduction = 0
-    
+
     # Calculate taxable income (no deductions in new regime)
     taxable_income = annual_salary
-    
+
     # Apply tax slabs for new regime as per the updated document
     tax = 0
-    
-    # First ₹3,00,000 (₹0 to ₹3,00,000): 0% tax
-    if taxable_income <= 300000:
+
+    # Apply new regime tax slabs for FY 2025-26
+    if taxable_income <= 400000:
         tax = 0
+    elif taxable_income <= 800000:
+        tax = (taxable_income - 400000) * 0.05
+    elif taxable_income <= 1200000:
+        tax = 20000 + ((taxable_income - 800000) * 0.10)
+    elif taxable_income <= 1600000:
+        tax = 20000 + 40000 + ((taxable_income - 1200000) * 0.15)
+    elif taxable_income <= 2000000:
+        tax = 20000 + 40000 + 60000 + ((taxable_income - 1600000) * 0.20)
+    elif taxable_income <= 2400000:
+        tax = 20000 + 40000 + 60000 + 80000 + ((taxable_income - 2000000) * 0.25)
     else:
-        tax += 0  # 0% of first 300000
-        
-        # Next ₹3,00,000 (₹3,00,001 to ₹6,00,000): 5% tax
-        if taxable_income <= 600000:
-            tax += (taxable_income - 300000) * 0.05
-        else:
-            tax += 300000 * 0.05  # 5% of 300000 = 15000
-            
-            # Next ₹3,00,000 (₹6,00,001 to ₹9,00,000): 10% tax
-            if taxable_income <= 900000:
-                tax += (taxable_income - 600000) * 0.1
-            else:
-                tax += 300000 * 0.1  # 10% of 300000 = 30000
-                
-                # Next ₹3,00,000 (₹9,00,001 to ₹12,00,000): 15% tax
-                if taxable_income <= 1200000:
-                    tax += (taxable_income - 900000) * 0.15
-                else:
-                    tax += 300000 * 0.15  # 15% of 300000 = 45000
-                    
-                    # Next ₹3,00,000 (₹12,00,001 to ₹15,00,000): 20% tax
-                    if taxable_income <= 1500000:
-                        tax += (taxable_income - 1200000) * 0.2
-                    else:
-                        tax += 300000 * 0.2  # 20% of 300000 = 60000
-                        
-                        # Above ₹15,00,000: 30% tax
-                        tax += (taxable_income - 1500000) * 0.3
-    
+        tax = 20000 + 40000 + 60000 + 80000 + 100000 + ((taxable_income - 2400000) * 0.30)
+
+
     # Calculate health and education cess (4%)
     cess = tax * 0.04
-    
+
     # Calculate total tax liability
     tax_liability = tax + cess
-    
+
     return {
         'gross_income': annual_salary,
         'standard_deduction': standard_deduction,
@@ -150,34 +134,34 @@ def calculate_eligible_deductions(deductions):
     """Calculate eligible deductions for old regime"""
     # Section 80C, 80CCC, 80CCD(1) combined limit of 1.5 lakh
     section_80c_limit = min(deductions['section_80c'], 150000)
-    
+
     # Section 80CCD(1B) additional NPS contribution up to 50,000
     section_80ccd_1b_limit = min(deductions['section_80ccd_1b'], 50000)
-    
+
     # Section 80D - Medical Insurance Premium (up to 1 lakh)
     section_80d_limit = min(deductions['section_80d'], 100000)
-    
+
     # Section 24b - Housing Loan Interest
     section_24b_limit = deductions['section_24b']  # No specific limit
-    
+
     # Section 80E - Education Loan Interest
     section_80e_limit = deductions['section_80e']  # No specific limit
-    
+
     # Section 80G - Donations
     section_80g_limit = deductions['section_80g']  # Varies based on the type of donation
-    
+
     # Section 80TTA/TTB - Interest on Savings/Deposits
     section_80tta_ttb_limit = min(deductions['section_80tta_ttb'], 50000)  # Considering higher limit for senior citizens
-    
+
     # Section 80DDB - Medical Treatment
     section_80ddb_limit = min(deductions['section_80ddb'], 100000)  # Approximate limit
-    
+
     # Section 80GG - House Rent
     section_80gg_limit = deductions['section_80gg']  # Subject to conditions
-    
+
     # Section 80U - Disability
     section_80u_limit = min(deductions['section_80u'], 125000)  # Higher limit for severe disability
-    
+
     # Total eligible deductions
     total_eligible_deductions = (
         section_80c_limit +
@@ -191,5 +175,5 @@ def calculate_eligible_deductions(deductions):
         section_80gg_limit +
         section_80u_limit
     )
-    
+
     return total_eligible_deductions
